@@ -31,7 +31,7 @@ const books = [
     },
     {
         title: 'City of Glass',
-        author: 'Paul Auster',
+        author: 'Paul Austerrr',
     },
 ];
 // This resolver retrieves books from the "books" array above.
