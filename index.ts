@@ -18,6 +18,11 @@ type Book {
 # case, the "books" query returns an array of zero or more Books (defined above).
 type Query {
     books: [Book]
+    findBooksByAuthor(author: String!): [Book]
+}
+
+type Mutation {
+    addBook(title: String, author: String): Book
 }
 `;
 
@@ -36,6 +41,14 @@ const books = [
 const resolvers = {
   Query: {
     books: () => books,
+    findBooksByAuthor: (_, { author }) => books.filter(book => book.author === author),
+  },
+  Mutation: {
+    addBook: (_, { title, author }) => {
+      const newBook = { title, author };
+      books.push(newBook);
+      return newBook;
+    },
   },
 };
 
